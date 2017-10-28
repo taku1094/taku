@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BlogApp</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+        <p id="logo"><a href="/">RailsCamp<span>Blog</span></a></p>
+        
+        <nav>
+            <% if user_signed_in? %>    
+                <%= link_to 'トップ', '/' %>
+            <%= link_to '新規投稿', '/posts/new' %>
+                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+             
+            <% else %>
+                <%= link_to 'トップ', '/' %>
+                <%= link_to 'ユーザー登録', new_user_registration_path %>
+                <%= link_to 'ログイン', new_user_session_path %>
+               
+            
+            <% end %>
+             <div class="clear"></div>
+        </nav>
+    </header>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+    <%= yield %>
+      
+      <div id="sidebar">
+        
+        <h2>★PV数ランキング</h2>
+        <ul>
+            <li><a href="">記事タイトル記事タイトル１記事タイトル記事タイトル<span>（10PV）</span></a></li>
+            <li><a href="">記事タイトル記事タイトル１記事タイトル記事タイトル<span>（8PV）</span></a></li>
+            <li><a href="">記事タイトル記事タイトル１記事タイトル記事タイトル<span>（2PV）</span></a></li>
+        </ul>
+    </div>
+    <div class="clear"></div>
+</div>
+      
+      <footer>
+    <div id="footer_inner">
+        <p>Copyright RailsCamp 2015 All Rights Reserved</p>
+    </div>
+</footer>
+      
+  </body>
+</html>
